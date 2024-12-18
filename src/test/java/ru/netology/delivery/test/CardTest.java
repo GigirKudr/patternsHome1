@@ -11,8 +11,7 @@ import ru.netology.delivery.data.DataGenerator;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -46,7 +45,7 @@ public class CardTest {
         $("[data-test-id='date'] input").setValue(dateForSecondPlaner);
         $(byText("Запланировать")).click();
         $("[data-test-id = 'replan-notification'] .notification__content")
-                .shouldHave(exactText("У Вас уже запланирована встреча на другую дату. Перепланировать?"))
+                .shouldHave(text("У вас уже запланирована встреча на другую дату. Перепланировать?"))
                 .shouldBe(visible);
         $("[data-test-id = 'replan-notification'] button").click();
         $("[data-test-id = 'success-notification'] .notification__content")
